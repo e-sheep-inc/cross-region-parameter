@@ -18,6 +18,7 @@ jobs:
           node-version: "22.16.0"
           registry-url: "https://npm.pkg.github.com"
       - run: npm ci
+      - run: npx projen compile
       - run: npx projen package:js
       - run: npm publish dist/js/*.tgz
         env:
