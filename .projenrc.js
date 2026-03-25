@@ -64,7 +64,6 @@ const project = new awscdk.AwsCdkConstructLibrary({
     '/examples/**/node_modules',
     '/examples/**/cdk.out',
     '/examples/**/.git',
-    '/test/cdk.out.e2e.*',
   ],
 
 
@@ -75,6 +74,9 @@ new TextFile(project, '.nvmrc', {
 });
 
 project.addPackageIgnore('/examples/');
+
+// Must be added after projen's !/test/ rule to take effect
+project.gitignore.addPatterns('/test/cdk.out.e2e.*/');
 
 
 project.synth();
