@@ -76,9 +76,6 @@ new TextFile(project, '.nvmrc', {
 
 project.addPackageIgnore('/examples/');
 
-// Add npm publish step to manual release flow (GitHub Packages)
-project.tasks.tryFind('release').exec('npm publish dist/js/*.tgz');
-
 // Must be added after projen's !/test/ rule to take effect
 project.gitignore.addPatterns('/test/cdk.out.e2e.*/');
 

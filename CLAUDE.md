@@ -29,13 +29,13 @@ RUN_E2E=true AWS_PROFILE=<profile> NODE_OPTIONS="--experimental-vm-modules" npx 
 
 ## Release
 
-Releases are manual. Published to GitHub Packages (npm registry).
+Releases are manual. Published to GitHub Packages (npm registry) via CI.
 
 ```bash
-npx projen release     # Bump, build, tag, push, and publish to GitHub Packages
+npx projen release     # Bump, build, tag, and push
 ```
 
-Requires `NODE_AUTH_TOKEN` with `write:packages` scope (or use `GITHUB_TOKEN` in CI). The release task runs: bump → build → git tag/push → npm publish.
+The release task runs: bump → build → git tag/push. The tag push triggers the `publish.yml` workflow which publishes to GitHub Packages using `GITHUB_TOKEN`.
 
 ## CI/CD
 
