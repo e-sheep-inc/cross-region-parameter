@@ -1,4 +1,6 @@
 
+## [0.0.18](https://github.com/e-sheep-inc/cross-region-parameter/compare/v0.0.17...v0.0.18) (2026-03-25)
+
 ## [0.0.17](https://github.com/e-sheep-inc/cross-region-parameter/compare/v0.0.16...v0.0.17) (2026-03-25)
 
 
