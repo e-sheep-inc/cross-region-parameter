@@ -8,7 +8,7 @@
   </h1>
 
   ```sh
-  npm i -D @e-sheep-inc/cross-region-parameter
+  npm i -D e-sheep-inc/cross-region-parameter
   ```
 
   <div align="left">
