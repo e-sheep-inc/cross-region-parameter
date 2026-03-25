@@ -1,4 +1,4 @@
-const { awscdk, TextFile, javascript } = require('projen');
+const { awscdk, TextFile, javascript, release } = require('projen');
 
 const nodejsVersion = '18.18.0';
 
@@ -19,6 +19,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   packageManager: javascript.NodePackageManager.NPM,
   npmAccess: javascript.NpmAccess.PUBLIC,
   releaseToNpm: false,
+  releaseTrigger: release.ReleaseTrigger.manual(),
   // python: {
   //   distName: 'e-sheep-inc.cross-region-parameter',
   //   module: 'e_sheep_inc.cross_region_parameter',
