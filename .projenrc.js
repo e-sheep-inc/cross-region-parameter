@@ -1,6 +1,6 @@
 const { awscdk, TextFile, javascript } = require('projen');
 
-const nodejsVersion = '14.17.6';
+const nodejsVersion = '18.18.0';
 
 const project = new awscdk.AwsCdkConstructLibrary({
 
@@ -35,7 +35,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   },
   // Dependencies
   minNodeVersion: nodejsVersion,
-  cdkVersion: '2.24.1',
+  cdkVersion: '2.200.0',
   constructsVersion: '10.0.0',
   peerDeps: [
     'constructs',
@@ -60,6 +60,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
     '/examples/**/node_modules',
     '/examples/**/cdk.out',
     '/examples/**/.git',
+    '/test/cdk.out.e2e.*',
   ],
 
 
