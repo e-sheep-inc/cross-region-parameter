@@ -22,6 +22,29 @@ npx jest test/parameter.test.ts
 npx jest -t "Basic usage"   # by test name
 ```
 
+E2E test (actually deploys to AWS):
+```bash
+RUN_E2E=true AWS_PROFILE=<profile> npx jest test/parameter.e2e.test.ts --no-coverage --testTimeout=600000
+```
+
+## Release
+
+Releases are manual. npm/Go publishing is disabled — only GitHub Releases are created.
+
+```bash
+npx projen bump        # Bump version, update CHANGELOG
+git push origin main --follow-tags
+```
+
+Then create a GitHub Release from the tag.
+
+## CI/CD
+
+- **build.yml** — Runs `npx projen build` on PRs
+- **pull-request-lint.yml** — Validates PR title format
+- **Dependabot** — Weekly PRs for npm and GitHub Actions updates
+- No automated release or dependency upgrade workflows
+
 ## Architecture
 
 The library exports a single construct: `CrossRegionParameter` (src/parameter.ts).
