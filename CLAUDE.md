@@ -29,14 +29,13 @@ RUN_E2E=true AWS_PROFILE=<profile> NODE_OPTIONS="--experimental-vm-modules" npx 
 
 ## Release
 
-Releases are manual. npm/Go publishing is disabled — only GitHub Releases are created.
+Releases are manual. Published to GitHub Packages (npm registry).
 
 ```bash
-npx projen bump        # Bump version, update CHANGELOG
-git push origin main --follow-tags
+npx projen release     # Bump, build, tag, push, and publish to GitHub Packages
 ```
 
-Then create a GitHub Release from the tag.
+Requires `NODE_AUTH_TOKEN` with `write:packages` scope (or use `GITHUB_TOKEN` in CI). The release task runs: bump → build → git tag/push → npm publish.
 
 ## CI/CD
 

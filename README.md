@@ -8,7 +8,7 @@
   </h1>
 
   ```sh
-  npm i -D e-sheep-inc/cross-region-parameter
+  npm i -D @e-sheep-inc/cross-region-parameter
   ```
 
   <div align="left">
@@ -27,6 +27,22 @@
 ![diagram](assets/diagram.svg)
 
 </div>
+
+<br/>
+
+## Setup
+
+This package is published to [GitHub Packages](https://github.com/e-sheep-inc/cross-region-parameter/packages). To install, add the following to your project's `.npmrc`:
+
+```
+@e-sheep-inc:registry=https://npm.pkg.github.com
+```
+
+Then install:
+
+```sh
+npm i -D @e-sheep-inc/cross-region-parameter
+```
 
 <br/>
 

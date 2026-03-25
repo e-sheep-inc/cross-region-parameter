@@ -18,7 +18,8 @@ const project = new awscdk.AwsCdkConstructLibrary({
   defaultReleaseBranch: 'main',
   packageManager: javascript.NodePackageManager.NPM,
   npmAccess: javascript.NpmAccess.PUBLIC,
-  releaseToNpm: false,
+  releaseToNpm: true,
+  npmRegistryUrl: 'https://npm.pkg.github.com',
   releaseTrigger: release.ReleaseTrigger.manual(),
   depsUpgrade: false,
   // python: {
@@ -74,6 +75,9 @@ new TextFile(project, '.nvmrc', {
 });
 
 project.addPackageIgnore('/examples/');
+
+// Add npm publish step to manual release flow (GitHub Packages)
+project.tasks.tryFind('release').exec('npm publish dist/js/*.tgz');
 
 // Must be added after projen's !/test/ rule to take effect
 project.gitignore.addPatterns('/test/cdk.out.e2e.*/');
