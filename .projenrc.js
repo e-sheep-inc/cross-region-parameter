@@ -20,6 +20,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   npmAccess: javascript.NpmAccess.PUBLIC,
   releaseToNpm: false,
   releaseTrigger: release.ReleaseTrigger.manual(),
+  depsUpgrade: false,
   // python: {
   //   distName: 'e-sheep-inc.cross-region-parameter',
   //   module: 'e_sheep_inc.cross_region_parameter',
