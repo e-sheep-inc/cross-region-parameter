@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-AWS CDK construct library (`@alma-cdk/cross-region-parameter`) that stores SSM Parameter Store parameters into a different AWS region using `AwsCustomResource`. Built with [projen](https://projen.io/) as an `AwsCdkConstructLibrary` — project configuration lives in `.projenrc.js` and most config files are generated (do not edit them directly; edit `.projenrc.js` and run `npx projen`).
+AWS CDK construct library (`@e-sheep-inc/cross-region-parameter`) that stores SSM Parameter Store parameters into a different AWS region using `AwsCustomResource`. Forked from [alma-cdk/cross-region-parameter](https://github.com/alma-cdk/cross-region-parameter). Built with [projen](https://projen.io/) as an `AwsCdkConstructLibrary` — project configuration lives in `.projenrc.js` and most config files are generated (do not edit them directly; edit `.projenrc.js` and run `npx projen`).
 
 ## Build & Test Commands
 
@@ -34,10 +34,5 @@ The library exports a single construct: `CrossRegionParameter` (src/parameter.ts
 
 - This is a **jsii** library — it must be compatible with jsii's supported language subset (no enums with computed values, no `extends` from non-jsii types, etc.).
 - `aws-sdk` and `change-case` are **bundled dependencies** (shipped with the package).
-- Peer dependencies: `aws-cdk-lib ^2.24.1`, `constructs ^10.0.0`.
-- Node >= 14.17.6.
-
-## Remotes
-
-- `origin` → `https://github.com/e-sheep-inc/cross-region-parameter.git` (fork)
-- `upstream` → `git@github.com:alma-cdk/cross-region-parameter.git` (original)
+- Peer dependencies: `aws-cdk-lib ^2.200.0`, `constructs ^10.0.0`.
+- Node >= 18.18.0.

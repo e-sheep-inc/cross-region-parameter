@@ -6,25 +6,26 @@ const project = new awscdk.AwsCdkConstructLibrary({
 
   // Metadata
   stability: 'experimental',
-  authorName: 'Alma Media',
+  authorName: 'Electric Sheep Inc.',
   authorOrganization: true,
-  authorAddress: 'opensource@almamedia.dev',
-  name: '@alma-cdk/cross-region-parameter',
+  authorAddress: 'https://github.com/e-sheep-inc',
+  name: '@e-sheep-inc/cross-region-parameter',
   description: 'Store AWS SSM Parameter Store Parameters into another AWS Region with AWS CDK',
-  repositoryUrl: 'https://github.com/alma-cdk/cross-region-parameter.git',
+  repositoryUrl: 'https://github.com/e-sheep-inc/cross-region-parameter.git',
   keywords: ['cdk', 'aws-cdk', 'awscdk', 'aws', 'cross-region', 'ssm', 'parameter'],
 
   // Publish configuration
   defaultReleaseBranch: 'main',
   packageManager: javascript.NodePackageManager.NPM,
   npmAccess: javascript.NpmAccess.PUBLIC,
+  releaseToNpm: false,
   // python: {
-  //   distName: 'alma-cdk.cross-region-parameter',
-  //   module: 'alma_cdk.cross_region_parameter',
+  //   distName: 'e-sheep-inc.cross-region-parameter',
+  //   module: 'e_sheep_inc.cross_region_parameter',
   // },
-  publishToGo: {
-    moduleName: 'github.com/alma-cdk/cross-region-parameter-go',
-  },
+  // publishToGo: {
+  //   moduleName: 'github.com/e-sheep-inc/cross-region-parameter-go',
+  // },
   majorVersion: 0,
   releaseBranches: {
     beta: {

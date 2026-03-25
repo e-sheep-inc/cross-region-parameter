@@ -2,13 +2,13 @@
 	<br/>
 	<br/>
   <h1>
-	<img height="140" src="assets/alma-cdk-cross-region-parameter.svg" alt="Alma CDK Cross-Region Parameter" />
+	<img height="140" src="assets/alma-cdk-cross-region-parameter.svg" alt="Cross-Region Parameter" />
   <br/>
   <br/>
   </h1>
 
   ```sh
-  npm i -D @alma-cdk/cross-region-parameter
+  npm i -D @e-sheep-inc/cross-region-parameter
   ```
 
   <div align="left">
@@ -30,11 +30,9 @@
 
 <br/>
 
-## 🚧 &nbsp; Project Stability
+## Why this fork?
 
-![experimental](https://img.shields.io/badge/stability-experimental-yellow "Stability: Experimental")
-
-This construct is still versioned with `v0` major version and breaking changes might be introduced if necessary (without a major version bump), though we aim to keep the API as stable as possible (even within `v0` development). We aim to publish `v1.0.0` soon and after that breaking changes will be introduced via major version bumps.
+AWS CDK's built-in cross-region parameter support (e.g. `aws_ssm.StringParameter` with cross-region references) internally generates Lambda functions via Custom Resources. This conflicts with SAM (Serverless Application Model) workflows, where SAM needs full control over Lambda function definitions and packaging. This construct uses `AwsCustomResource` with direct SDK calls instead, making it compatible with SAM-based projects.
 
 
 <br/>
@@ -42,7 +40,7 @@ This construct is still versioned with `v0` major version and breaking changes m
 ## Getting Started
 
 ```ts
-import { CrossRegionParameter } from "@alma-cdk/cross-region-parameter";
+import { CrossRegionParameter } from "@e-sheep-inc/cross-region-parameter";
 
 new CrossRegionParameter(this, 'SayHiToSweden', {
   region: 'eu-north-1',
@@ -51,3 +49,5 @@ new CrossRegionParameter(this, 'SayHiToSweden', {
   value: 'Hej då!',
 });
 ```
+
+> Forked from [alma-cdk/cross-region-parameter](https://github.com/alma-cdk/cross-region-parameter) (Apache-2.0)

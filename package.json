@@ -1,9 +1,9 @@
 {
-  "name": "@alma-cdk/cross-region-parameter",
+  "name": "@e-sheep-inc/cross-region-parameter",
   "description": "Store AWS SSM Parameter Store Parameters into another AWS Region with AWS CDK",
   "repository": {
     "type": "git",
-    "url": "https://github.com/alma-cdk/cross-region-parameter.git"
+    "url": "https://github.com/e-sheep-inc/cross-region-parameter.git"
   },
   "scripts": {
     "build": "npx projen build",
@@ -17,8 +17,6 @@
     "eslint": "npx projen eslint",
     "package": "npx projen package",
     "package-all": "npx projen package-all",
-    "package:go": "npx projen package:go",
-    "package:js": "npx projen package:js",
     "post-compile": "npx projen post-compile",
     "post-upgrade": "npx projen post-upgrade",
     "pre-compile": "npx projen pre-compile",
@@ -32,8 +30,8 @@
     "projen": "npx projen"
   },
   "author": {
-    "name": "Alma Media",
-    "email": "opensource@almamedia.dev",
+    "name": "Electric Sheep Inc.",
+    "url": "https://github.com/e-sheep-inc",
     "organization": true
   },
   "devDependencies": {
@@ -137,11 +135,7 @@
   "stability": "experimental",
   "jsii": {
     "outdir": "dist",
-    "targets": {
-      "go": {
-        "moduleName": "github.com/alma-cdk/cross-region-parameter-go"
-      }
-    },
+    "targets": {},
     "tsc": {
       "outDir": "lib",
       "rootDir": "src"
