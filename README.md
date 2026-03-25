@@ -8,7 +8,7 @@
   </h1>
 
   ```sh
-  npm i -D @e-sheep-inc/cross-region-parameter
+  npm i -D github:e-sheep-inc/cross-region-parameter
   ```
 
   <div align="left">
@@ -32,18 +32,19 @@
 
 ## Setup
 
-This package is published to [GitHub Packages](https://github.com/e-sheep-inc/cross-region-parameter/packages). Add the following to your project's `.npmrc`:
-
-```
-@e-sheep-inc:registry=https://npm.pkg.github.com
-//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}
-```
-
-Set the `GITHUB_TOKEN` environment variable to a [personal access token](https://github.com/settings/tokens) with `read:packages` scope, then install:
+Install directly from GitHub:
 
 ```sh
-npm i -D @e-sheep-inc/cross-region-parameter
+npm i -D github:e-sheep-inc/cross-region-parameter
 ```
+
+Or pin to a specific commit:
+
+```sh
+npm i -D github:e-sheep-inc/cross-region-parameter#abc1234
+```
+
+TypeScript is compiled automatically via the `prepare` script on install.
 
 <br/>
 

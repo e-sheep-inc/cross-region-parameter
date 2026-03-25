@@ -1,62 +1,47 @@
-const { awscdk, TextFile, javascript, release } = require('projen');
+const { typescript, TextFile, javascript } = require('projen');
 
 const nodejsVersion = '22.16.0';
 
-const project = new awscdk.AwsCdkConstructLibrary({
+const project = new typescript.TypeScriptProject({
 
   // Metadata
-  stability: 'experimental',
-  authorName: 'Electric Sheep Inc.',
-  authorOrganization: true,
-  authorAddress: 'https://github.com/e-sheep-inc',
   name: '@e-sheep-inc/cross-region-parameter',
   description: 'Store AWS SSM Parameter Store Parameters into another AWS Region with AWS CDK',
   repositoryUrl: 'https://github.com/e-sheep-inc/cross-region-parameter.git',
+  authorName: 'Electric Sheep Inc.',
+  authorOrganization: true,
+  authorUrl: 'https://github.com/e-sheep-inc',
+  license: 'Apache-2.0',
   keywords: ['cdk', 'aws-cdk', 'awscdk', 'aws', 'cross-region', 'ssm', 'parameter'],
 
-  // Publish configuration
-  defaultReleaseBranch: 'main',
   packageManager: javascript.NodePackageManager.NPM,
-  npmAccess: javascript.NpmAccess.PUBLIC,
-  releaseToNpm: true,
-  npmRegistryUrl: 'https://npm.pkg.github.com',
-  releaseTrigger: release.ReleaseTrigger.manual(),
+  minNodeVersion: nodejsVersion,
+  defaultReleaseBranch: 'main',
+
+  // リリース・公開なし
+  release: false,
   depsUpgrade: false,
-  // python: {
-  //   distName: 'e-sheep-inc.cross-region-parameter',
-  //   module: 'e_sheep_inc.cross_region_parameter',
-  // },
-  // publishToGo: {
-  //   moduleName: 'github.com/e-sheep-inc/cross-region-parameter-go',
-  // },
-  majorVersion: 0,
-  releaseBranches: {
-    beta: {
-      majorVersion: 1,
-      prerelease: 'beta',
-      npmDistTag: 'beta',
+
+  // Dependencies
+  peerDeps: ['aws-cdk-lib@^2.244.0', 'constructs@^10.5.0'],
+  devDeps: ['aws-cdk-lib@2.244.0', 'constructs@10.5.0', '@aws-sdk/client-ssm', '@aws-sdk/client-sts'],
+  bundledDeps: ['change-case'],
+
+  typescriptVersion: '^5',
+  tsconfig: {
+    compilerOptions: {
+      lib: ['es2020'],
+      target: 'es2020',
     },
   },
-  // Dependencies
-  minNodeVersion: nodejsVersion,
-  cdkVersion: '2.244.0',
+
+  srcdir: 'src',
+  testdir: 'test',
+  libdir: 'lib',
+
   jestOptions: {
     jestVersion: '^29',
   },
-  constructsVersion: '10.5.0',
-  peerDeps: [
-    'constructs',
-    'aws-cdk-lib',
-  ],
-  devDeps: [
-    'constructs',
-    'aws-cdk-lib',
-    '@aws-sdk/client-ssm',
-    '@aws-sdk/client-sts',
-  ],
-  bundledDeps: [
-    'change-case',
-  ],
 
   // Gitignore
   gitignore: [
@@ -67,7 +52,12 @@ const project = new awscdk.AwsCdkConstructLibrary({
     '/examples/**/.git',
   ],
 
+});
 
+// git-based install 時に tsc コンパイルを実行
+project.addTask('prepare', {
+  description: 'Compile TypeScript for git-based installs',
+  steps: [{ spawn: 'compile' }],
 });
 
 new TextFile(project, '.nvmrc', {
@@ -75,9 +65,6 @@ new TextFile(project, '.nvmrc', {
 });
 
 project.addPackageIgnore('/examples/');
-
-// Must be added after projen's !/test/ rule to take effect
 project.gitignore.addPatterns('/test/cdk.out.e2e.*/');
-
 
 project.synth();

@@ -24,24 +24,6 @@
         }
       ]
     },
-    "bump": {
-      "name": "bump",
-      "description": "Bumps version based on latest git tag and generates a changelog entry",
-      "env": {
-        "OUTFILE": "package.json",
-        "CHANGELOG": "dist/changelog.md",
-        "BUMPFILE": "dist/version.txt",
-        "RELEASETAG": "dist/releasetag.txt",
-        "RELEASE_TAG_PREFIX": "",
-        "BUMP_PACKAGE": "commit-and-tag-version@^12"
-      },
-      "steps": [
-        {
-          "builtin": "release/bump-version"
-        }
-      ],
-      "condition": "git log --oneline -1 | grep -qv \"chore(release):\""
-    },
     "clobber": {
       "name": "clobber",
       "description": "hard resets to HEAD of origin and cleans the local repo",
@@ -74,21 +56,12 @@
       ],
       "condition": "git diff --exit-code > /dev/null"
     },
-    "compat": {
-      "name": "compat",
-      "description": "Perform API compatibility check against latest version",
-      "steps": [
-        {
-          "exec": "jsii-diff npm:$(node -p \"require('./package.json').name\") -k --ignore-file .compatignore || (echo \"\nUNEXPECTED BREAKING CHANGES: add keys such as 'removed:constructs.Node.of' to .compatignore to skip.\n\" && exit 1)"
-        }
-      ]
-    },
     "compile": {
       "name": "compile",
       "description": "Only compile",
       "steps": [
         {
-          "exec": "jsii --silence-warnings=reserved-word"
+          "exec": "tsc --build"
         }
       ]
     },
@@ -98,15 +71,6 @@
       "steps": [
         {
           "exec": "node .projenrc.js"
-        }
-      ]
-    },
-    "docgen": {
-      "name": "docgen",
-      "description": "Generate API.md from .jsii manifest",
-      "steps": [
-        {
-          "exec": "jsii-docgen -o API.md"
         }
       ]
     },
@@ -159,144 +123,27 @@
       "description": "Creates the distribution package",
       "steps": [
         {
-          "spawn": "package:js",
-          "condition": "node -e \"if (!process.env.CI) process.exit(1)\""
+          "exec": "mkdir -p dist/js"
         },
         {
-          "spawn": "package-all",
-          "condition": "node -e \"if (process.env.CI) process.exit(1)\""
-        }
-      ]
-    },
-    "package-all": {
-      "name": "package-all",
-      "description": "Packages artifacts for all target languages",
-      "steps": [
-        {
-          "spawn": "package:js"
-        }
-      ]
-    },
-    "package:js": {
-      "name": "package:js",
-      "description": "Create js language bindings",
-      "steps": [
-        {
-          "exec": "jsii-pacmak -v --target js"
+          "exec": "npm pack --pack-destination dist/js"
         }
       ]
     },
     "post-compile": {
       "name": "post-compile",
-      "description": "Runs after successful compilation",
-      "steps": [
-        {
-          "spawn": "docgen"
-        }
-      ]
+      "description": "Runs after successful compilation"
     },
     "pre-compile": {
       "name": "pre-compile",
       "description": "Prepare the project for compilation"
     },
-    "publish:git": {
-      "name": "publish:git",
-      "description": "Prepends the release changelog onto the project changelog, creates a release commit, and tags the release",
-      "env": {
-        "CHANGELOG": "dist/changelog.md",
-        "RELEASE_TAG_FILE": "dist/releasetag.txt",
-        "PROJECT_CHANGELOG_FILE": "CHANGELOG.md",
-        "VERSION_FILE": "dist/version.txt"
-      },
+    "prepare": {
+      "name": "prepare",
+      "description": "Compile TypeScript for git-based installs",
       "steps": [
         {
-          "builtin": "release/update-changelog"
-        },
-        {
-          "builtin": "release/tag-version"
-        },
-        {
-          "exec": "git push --follow-tags origin main"
-        }
-      ],
-      "condition": "git log --oneline -1 | grep -qv \"chore(release):\""
-    },
-    "publish:git:beta": {
-      "name": "publish:git:beta",
-      "description": "Prepends the release changelog onto the project changelog, creates a release commit, and tags the release",
-      "env": {
-        "CHANGELOG": "dist/changelog.md",
-        "RELEASE_TAG_FILE": "dist/releasetag.txt",
-        "PROJECT_CHANGELOG_FILE": "CHANGELOG.md",
-        "VERSION_FILE": "dist/version.txt"
-      },
-      "steps": [
-        {
-          "builtin": "release/update-changelog"
-        },
-        {
-          "builtin": "release/tag-version"
-        },
-        {
-          "exec": "git push --follow-tags origin beta"
-        }
-      ],
-      "condition": "git log --oneline -1 | grep -qv \"chore(release):\""
-    },
-    "release": {
-      "name": "release",
-      "description": "Prepare a release from \"main\" branch",
-      "env": {
-        "RELEASE": "true",
-        "MAJOR": "0"
-      },
-      "steps": [
-        {
-          "exec": "rm -fr dist"
-        },
-        {
-          "spawn": "bump"
-        },
-        {
-          "spawn": "build"
-        },
-        {
-          "spawn": "unbump"
-        },
-        {
-          "exec": "git diff --ignore-space-at-eol --exit-code"
-        },
-        {
-          "spawn": "publish:git"
-        }
-      ]
-    },
-    "release:beta": {
-      "name": "release:beta",
-      "description": "Prepare a release from \"beta\" branch",
-      "env": {
-        "RELEASE": "true",
-        "MAJOR": "1",
-        "PRERELEASE": "beta"
-      },
-      "steps": [
-        {
-          "exec": "rm -fr dist"
-        },
-        {
-          "spawn": "bump"
-        },
-        {
-          "spawn": "build"
-        },
-        {
-          "spawn": "unbump"
-        },
-        {
-          "exec": "git diff --ignore-space-at-eol --exit-code"
-        },
-        {
-          "spawn": "publish:git:beta"
+          "spawn": "compile"
         }
       ]
     },
@@ -322,29 +169,12 @@
         }
       ]
     },
-    "unbump": {
-      "name": "unbump",
-      "description": "Restores version to 0.0.0",
-      "env": {
-        "OUTFILE": "package.json",
-        "CHANGELOG": "dist/changelog.md",
-        "BUMPFILE": "dist/version.txt",
-        "RELEASETAG": "dist/releasetag.txt",
-        "RELEASE_TAG_PREFIX": "",
-        "BUMP_PACKAGE": "commit-and-tag-version@^12"
-      },
-      "steps": [
-        {
-          "builtin": "release/reset-version"
-        }
-      ]
-    },
     "watch": {
       "name": "watch",
       "description": "Watch & compile in the background",
       "steps": [
         {
-          "exec": "jsii -w --silence-warnings=reserved-word"
+          "exec": "tsc --build -w"
         }
       ]
     }
