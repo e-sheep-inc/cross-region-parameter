@@ -2,7 +2,19 @@ import { Stack } from 'aws-cdk-lib';
 import * as iam from 'aws-cdk-lib/aws-iam';
 import * as ssm from 'aws-cdk-lib/aws-ssm';
 import * as cr from 'aws-cdk-lib/custom-resources';
-import { PutParameterRequest, TagList } from 'aws-sdk/clients/ssm';
+/** Shape matching SSM PutParameter API request parameters. */
+interface PutParameterParams {
+  Name: string;
+  Value: string;
+  AllowedPattern?: string;
+  Description?: string;
+  KeyId?: string;
+  Overwrite?: boolean;
+  Policies?: string;
+  Tags?: Array<{ Key: string; Value: string }>;
+  Tier?: string;
+  Type?: string;
+}
 import { pascalCase } from 'change-case';
 import { Construct } from 'constructs';
 import { addError } from './errors/add';
@@ -73,7 +85,7 @@ export class CrossRegionParameter extends Construct {
       policies,
     } = props;
 
-    const parameters: PutParameterRequest = {
+    const parameters: PutParameterParams = {
       Name: name, /* required */
       Value: value, /* required */
       AllowedPattern: allowedPattern,
@@ -104,7 +116,7 @@ export class CrossRegionParameter extends Construct {
   }
 
   /** Convert CDK/JSII compatible TagPropList to SDK compatible TagList. */
-  private tagPropsToTagParams(tags?: TagPropList): TagList | undefined {
+  private tagPropsToTagParams(tags?: TagPropList): Array<{ Key: string; Value: string }> | undefined {
     return tags?.map(t => ({
       Key: t.key,
       Value: t.value,

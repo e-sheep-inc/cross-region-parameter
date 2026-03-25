@@ -1,8 +1,9 @@
-import * as crypto from 'crypto';
 import { execSync } from 'child_process';
+import * as crypto from 'crypto';
 import * as path from 'path';
+import { SSMClient, GetParameterCommand } from '@aws-sdk/client-ssm';
+import { STSClient, GetCallerIdentityCommand } from '@aws-sdk/client-sts';
 import * as cdk from 'aws-cdk-lib';
-import * as AWS from 'aws-sdk';
 import { CrossRegionParameter } from '../src';
 
 const RUN_E2E = process.env.RUN_E2E === 'true';
@@ -15,43 +16,13 @@ const PARAM_DESCRIPTION = 'E2E test parameter for cross-region-parameter';
 const SOURCE_REGION = 'us-east-1';
 const TARGET_REGION = 'eu-west-1';
 
-/**
- * Resolve AWS credentials from the current environment (supports SSO profiles).
- * Uses `aws configure export-credentials` to get temporary credentials,
- * then injects them into process.env so both AWS SDK v2 and CDK CLI can use them.
- */
-function loadCredentials(): void {
-  try {
-    const output = execSync('aws configure export-credentials --format env', {
-      encoding: 'utf-8',
-      timeout: 30_000,
-    });
-    for (const line of output.trim().split('\n')) {
-      const match = line.match(/^export (\w+)=(.+)$/);
-      if (match) {
-        process.env[match[1]] = match[2];
-      }
-    }
-    // Update SDK v2 config with exported credentials
-    AWS.config.update({
-      accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-      sessionToken: process.env.AWS_SESSION_TOKEN,
-    });
-  } catch (err) {
-    throw new Error(`Failed to load AWS credentials. Ensure AWS CLI is configured.\n${err}`);
-  }
-}
-
 (RUN_E2E ? describe : describe.skip)('E2E: CrossRegionParameter', () => {
   const cdkOutDir = path.join(__dirname, `cdk.out.e2e.${UNIQUE_ID}`);
 
   beforeAll(async () => {
-    loadCredentials();
-
     // Verify AWS credentials
-    const sts = new AWS.STS();
-    const identity = await sts.getCallerIdentity().promise();
+    const sts = new STSClient({});
+    const identity = await sts.send(new GetCallerIdentityCommand({}));
     const accountId = identity.Account!;
     console.log(`AWS Account: ${accountId}`);
     console.log(`Stack: ${STACK_NAME}`);
@@ -99,8 +70,8 @@ function loadCredentials(): void {
   }, 10 * 60 * 1000);
 
   test('parameter exists in target region with correct value', async () => {
-    const ssm = new AWS.SSM({ region: TARGET_REGION });
-    const result = await ssm.getParameter({ Name: PARAM_NAME }).promise();
+    const ssm = new SSMClient({ region: TARGET_REGION });
+    const result = await ssm.send(new GetParameterCommand({ Name: PARAM_NAME }));
 
     expect(result.Parameter).toBeDefined();
     expect(result.Parameter!.Name).toBe(PARAM_NAME);
@@ -109,10 +80,10 @@ function loadCredentials(): void {
   });
 
   test('parameter does NOT exist in source region', async () => {
-    const ssm = new AWS.SSM({ region: SOURCE_REGION });
+    const ssm = new SSMClient({ region: SOURCE_REGION });
 
     await expect(
-      ssm.getParameter({ Name: PARAM_NAME }).promise(),
-    ).rejects.toThrow('ParameterNotFound');
+      ssm.send(new GetParameterCommand({ Name: PARAM_NAME })),
+    ).rejects.toMatchObject({ name: 'ParameterNotFound' });
   });
 });

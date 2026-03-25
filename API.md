@@ -2,41 +2,41 @@
 
 ## Constructs <a name="Constructs" id="Constructs"></a>
 
-### CrossRegionParameter <a name="CrossRegionParameter" id="@alma-cdk/cross-region-parameter.CrossRegionParameter"></a>
+### CrossRegionParameter <a name="CrossRegionParameter" id="@e-sheep-inc/cross-region-parameter.CrossRegionParameter"></a>
 
 Cross-Region SSM Parameter.
 
-#### Initializers <a name="Initializers" id="@alma-cdk/cross-region-parameter.CrossRegionParameter.Initializer"></a>
+#### Initializers <a name="Initializers" id="@e-sheep-inc/cross-region-parameter.CrossRegionParameter.Initializer"></a>
 
 ```typescript
-import { CrossRegionParameter } from '@alma-cdk/cross-region-parameter'
+import { CrossRegionParameter } from '@e-sheep-inc/cross-region-parameter'
 
 new CrossRegionParameter(scope: Construct, name: string, props: CrossRegionParameterProps)
 ```
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@alma-cdk/cross-region-parameter.CrossRegionParameter.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
-| <code><a href="#@alma-cdk/cross-region-parameter.CrossRegionParameter.Initializer.parameter.name">name</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@alma-cdk/cross-region-parameter.CrossRegionParameter.Initializer.parameter.props">props</a></code> | <code><a href="#@alma-cdk/cross-region-parameter.CrossRegionParameterProps">CrossRegionParameterProps</a></code> | *No description.* |
+| <code><a href="#@e-sheep-inc/cross-region-parameter.CrossRegionParameter.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
+| <code><a href="#@e-sheep-inc/cross-region-parameter.CrossRegionParameter.Initializer.parameter.name">name</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@e-sheep-inc/cross-region-parameter.CrossRegionParameter.Initializer.parameter.props">props</a></code> | <code><a href="#@e-sheep-inc/cross-region-parameter.CrossRegionParameterProps">CrossRegionParameterProps</a></code> | *No description.* |
 
 ---
 
-##### `scope`<sup>Required</sup> <a name="scope" id="@alma-cdk/cross-region-parameter.CrossRegionParameter.Initializer.parameter.scope"></a>
+##### `scope`<sup>Required</sup> <a name="scope" id="@e-sheep-inc/cross-region-parameter.CrossRegionParameter.Initializer.parameter.scope"></a>
 
 - *Type:* constructs.Construct
 
 ---
 
-##### `name`<sup>Required</sup> <a name="name" id="@alma-cdk/cross-region-parameter.CrossRegionParameter.Initializer.parameter.name"></a>
+##### `name`<sup>Required</sup> <a name="name" id="@e-sheep-inc/cross-region-parameter.CrossRegionParameter.Initializer.parameter.name"></a>
 
 - *Type:* string
 
 ---
 
-##### `props`<sup>Required</sup> <a name="props" id="@alma-cdk/cross-region-parameter.CrossRegionParameter.Initializer.parameter.props"></a>
+##### `props`<sup>Required</sup> <a name="props" id="@e-sheep-inc/cross-region-parameter.CrossRegionParameter.Initializer.parameter.props"></a>
 
-- *Type:* <a href="#@alma-cdk/cross-region-parameter.CrossRegionParameterProps">CrossRegionParameterProps</a>
+- *Type:* <a href="#@e-sheep-inc/cross-region-parameter.CrossRegionParameterProps">CrossRegionParameterProps</a>
 
 ---
 
@@ -44,11 +44,12 @@ new CrossRegionParameter(scope: Construct, name: string, props: CrossRegionParam
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#@alma-cdk/cross-region-parameter.CrossRegionParameter.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@e-sheep-inc/cross-region-parameter.CrossRegionParameter.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@e-sheep-inc/cross-region-parameter.CrossRegionParameter.with">with</a></code> | Applies one or more mixins to this construct. |
 
 ---
 
-##### `toString` <a name="toString" id="@alma-cdk/cross-region-parameter.CrossRegionParameter.toString"></a>
+##### `toString` <a name="toString" id="@e-sheep-inc/cross-region-parameter.CrossRegionParameter.toString"></a>
 
 ```typescript
 public toString(): string
@@ -56,25 +57,60 @@ public toString(): string
 
 Returns a string representation of this construct.
 
+##### `with` <a name="with" id="@e-sheep-inc/cross-region-parameter.CrossRegionParameter.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@e-sheep-inc/cross-region-parameter.CrossRegionParameter.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
+
 #### Static Functions <a name="Static Functions" id="Static Functions"></a>
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#@alma-cdk/cross-region-parameter.CrossRegionParameter.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+| <code><a href="#@e-sheep-inc/cross-region-parameter.CrossRegionParameter.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
 
 ---
 
-##### ~~`isConstruct`~~ <a name="isConstruct" id="@alma-cdk/cross-region-parameter.CrossRegionParameter.isConstruct"></a>
+##### `isConstruct` <a name="isConstruct" id="@e-sheep-inc/cross-region-parameter.CrossRegionParameter.isConstruct"></a>
 
 ```typescript
-import { CrossRegionParameter } from '@alma-cdk/cross-region-parameter'
+import { CrossRegionParameter } from '@e-sheep-inc/cross-region-parameter'
 
 CrossRegionParameter.isConstruct(x: any)
 ```
 
 Checks if `x` is a construct.
 
-###### `x`<sup>Required</sup> <a name="x" id="@alma-cdk/cross-region-parameter.CrossRegionParameter.isConstruct.parameter.x"></a>
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
+
+###### `x`<sup>Required</sup> <a name="x" id="@e-sheep-inc/cross-region-parameter.CrossRegionParameter.isConstruct.parameter.x"></a>
 
 - *Type:* any
 
@@ -86,11 +122,11 @@ Any object.
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@alma-cdk/cross-region-parameter.CrossRegionParameter.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@e-sheep-inc/cross-region-parameter.CrossRegionParameter.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
 
 ---
 
-##### `node`<sup>Required</sup> <a name="node" id="@alma-cdk/cross-region-parameter.CrossRegionParameter.property.node"></a>
+##### `node`<sup>Required</sup> <a name="node" id="@e-sheep-inc/cross-region-parameter.CrossRegionParameter.property.node"></a>
 
 ```typescript
 public readonly node: Node;
@@ -105,12 +141,12 @@ The tree node.
 
 ## Structs <a name="Structs" id="Structs"></a>
 
-### CrossRegionParameterProps <a name="CrossRegionParameterProps" id="@alma-cdk/cross-region-parameter.CrossRegionParameterProps"></a>
+### CrossRegionParameterProps <a name="CrossRegionParameterProps" id="@e-sheep-inc/cross-region-parameter.CrossRegionParameterProps"></a>
 
-#### Initializer <a name="Initializer" id="@alma-cdk/cross-region-parameter.CrossRegionParameterProps.Initializer"></a>
+#### Initializer <a name="Initializer" id="@e-sheep-inc/cross-region-parameter.CrossRegionParameterProps.Initializer"></a>
 
 ```typescript
-import { CrossRegionParameterProps } from '@alma-cdk/cross-region-parameter'
+import { CrossRegionParameterProps } from '@e-sheep-inc/cross-region-parameter'
 
 const crossRegionParameterProps: CrossRegionParameterProps = { ... }
 ```
@@ -119,20 +155,20 @@ const crossRegionParameterProps: CrossRegionParameterProps = { ... }
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@alma-cdk/cross-region-parameter.CrossRegionParameterProps.property.description">description</a></code> | <code>string</code> | Information about the SSM Parameter that you want to add. |
-| <code><a href="#@alma-cdk/cross-region-parameter.CrossRegionParameterProps.property.name">name</a></code> | <code>string</code> | SSM Parameter name. |
-| <code><a href="#@alma-cdk/cross-region-parameter.CrossRegionParameterProps.property.region">region</a></code> | <code>string</code> | Target region for the parameter. |
-| <code><a href="#@alma-cdk/cross-region-parameter.CrossRegionParameterProps.property.value">value</a></code> | <code>string</code> | The SSM Parameter value that you want to add. |
-| <code><a href="#@alma-cdk/cross-region-parameter.CrossRegionParameterProps.property.allowedPattern">allowedPattern</a></code> | <code>string</code> | A regular expression used to validate the SSM Parameter Value. |
-| <code><a href="#@alma-cdk/cross-region-parameter.CrossRegionParameterProps.property.keyId">keyId</a></code> | <code>string</code> | The AWS Key Management Service (AWS KMS) ID that you want to use to encrypt a parameter. |
-| <code><a href="#@alma-cdk/cross-region-parameter.CrossRegionParameterProps.property.parameterTier">parameterTier</a></code> | <code>aws-cdk-lib.aws_ssm.ParameterTier</code> | The SSM Parameter Tier to assign to a parameter. |
-| <code><a href="#@alma-cdk/cross-region-parameter.CrossRegionParameterProps.property.parameterType">parameterType</a></code> | <code>aws-cdk-lib.aws_ssm.ParameterType</code> | The type of SSM Parameter that you want to add. |
-| <code><a href="#@alma-cdk/cross-region-parameter.CrossRegionParameterProps.property.policies">policies</a></code> | <code>string</code> | One or more policies to apply to a SSM Parameter. |
-| <code><a href="#@alma-cdk/cross-region-parameter.CrossRegionParameterProps.property.tags">tags</a></code> | <code><a href="#@alma-cdk/cross-region-parameter.TagProp">TagProp</a>[]</code> | Tags to add into the SSM Paramater that you want to add. |
+| <code><a href="#@e-sheep-inc/cross-region-parameter.CrossRegionParameterProps.property.description">description</a></code> | <code>string</code> | Information about the SSM Parameter that you want to add. |
+| <code><a href="#@e-sheep-inc/cross-region-parameter.CrossRegionParameterProps.property.name">name</a></code> | <code>string</code> | SSM Parameter name. |
+| <code><a href="#@e-sheep-inc/cross-region-parameter.CrossRegionParameterProps.property.region">region</a></code> | <code>string</code> | Target region for the parameter. |
+| <code><a href="#@e-sheep-inc/cross-region-parameter.CrossRegionParameterProps.property.value">value</a></code> | <code>string</code> | The SSM Parameter value that you want to add. |
+| <code><a href="#@e-sheep-inc/cross-region-parameter.CrossRegionParameterProps.property.allowedPattern">allowedPattern</a></code> | <code>string</code> | A regular expression used to validate the SSM Parameter Value. |
+| <code><a href="#@e-sheep-inc/cross-region-parameter.CrossRegionParameterProps.property.keyId">keyId</a></code> | <code>string</code> | The AWS Key Management Service (AWS KMS) ID that you want to use to encrypt a parameter. |
+| <code><a href="#@e-sheep-inc/cross-region-parameter.CrossRegionParameterProps.property.parameterTier">parameterTier</a></code> | <code>aws-cdk-lib.aws_ssm.ParameterTier</code> | The SSM Parameter Tier to assign to a parameter. |
+| <code><a href="#@e-sheep-inc/cross-region-parameter.CrossRegionParameterProps.property.parameterType">parameterType</a></code> | <code>aws-cdk-lib.aws_ssm.ParameterType</code> | The type of SSM Parameter that you want to add. |
+| <code><a href="#@e-sheep-inc/cross-region-parameter.CrossRegionParameterProps.property.policies">policies</a></code> | <code>string</code> | One or more policies to apply to a SSM Parameter. |
+| <code><a href="#@e-sheep-inc/cross-region-parameter.CrossRegionParameterProps.property.tags">tags</a></code> | <code><a href="#@e-sheep-inc/cross-region-parameter.TagProp">TagProp</a>[]</code> | Tags to add into the SSM Paramater that you want to add. |
 
 ---
 
-##### `description`<sup>Required</sup> <a name="description" id="@alma-cdk/cross-region-parameter.CrossRegionParameterProps.property.description"></a>
+##### `description`<sup>Required</sup> <a name="description" id="@e-sheep-inc/cross-region-parameter.CrossRegionParameterProps.property.description"></a>
 
 ```typescript
 public readonly description: string;
@@ -153,7 +189,7 @@ Required by this construct (AWS considers it as optional).
 ```
 
 
-##### `name`<sup>Required</sup> <a name="name" id="@alma-cdk/cross-region-parameter.CrossRegionParameterProps.property.name"></a>
+##### `name`<sup>Required</sup> <a name="name" id="@e-sheep-inc/cross-region-parameter.CrossRegionParameterProps.property.name"></a>
 
 ```typescript
 public readonly name: string;
@@ -172,7 +208,7 @@ SSM Parameter name.
 ```
 
 
-##### `region`<sup>Required</sup> <a name="region" id="@alma-cdk/cross-region-parameter.CrossRegionParameterProps.property.region"></a>
+##### `region`<sup>Required</sup> <a name="region" id="@e-sheep-inc/cross-region-parameter.CrossRegionParameterProps.property.region"></a>
 
 ```typescript
 public readonly region: string;
@@ -193,7 +229,7 @@ Must be some other region than the current Stack's region.
 ```
 
 
-##### `value`<sup>Required</sup> <a name="value" id="@alma-cdk/cross-region-parameter.CrossRegionParameterProps.property.value"></a>
+##### `value`<sup>Required</sup> <a name="value" id="@e-sheep-inc/cross-region-parameter.CrossRegionParameterProps.property.value"></a>
 
 ```typescript
 public readonly value: string;
@@ -216,7 +252,7 @@ Limits:
 ```
 
 
-##### `allowedPattern`<sup>Optional</sup> <a name="allowedPattern" id="@alma-cdk/cross-region-parameter.CrossRegionParameterProps.property.allowedPattern"></a>
+##### `allowedPattern`<sup>Optional</sup> <a name="allowedPattern" id="@e-sheep-inc/cross-region-parameter.CrossRegionParameterProps.property.allowedPattern"></a>
 
 ```typescript
 public readonly allowedPattern: string;
@@ -240,7 +276,7 @@ you can specify the following: `^\d+$`.
 ```
 
 
-##### `keyId`<sup>Optional</sup> <a name="keyId" id="@alma-cdk/cross-region-parameter.CrossRegionParameterProps.property.keyId"></a>
+##### `keyId`<sup>Optional</sup> <a name="keyId" id="@e-sheep-inc/cross-region-parameter.CrossRegionParameterProps.property.keyId"></a>
 
 ```typescript
 public readonly keyId: string;
@@ -267,7 +303,7 @@ If you don't specify a key ID, the system uses the default key associated with y
 ```
 
 
-##### `parameterTier`<sup>Optional</sup> <a name="parameterTier" id="@alma-cdk/cross-region-parameter.CrossRegionParameterProps.property.parameterTier"></a>
+##### `parameterTier`<sup>Optional</sup> <a name="parameterTier" id="@e-sheep-inc/cross-region-parameter.CrossRegionParameterProps.property.parameterTier"></a>
 
 ```typescript
 public readonly parameterTier: ParameterTier;
@@ -292,7 +328,7 @@ ParameterTier.INTELLIGENT_TIERING
 ```
 
 
-##### `parameterType`<sup>Optional</sup> <a name="parameterType" id="@alma-cdk/cross-region-parameter.CrossRegionParameterProps.property.parameterType"></a>
+##### `parameterType`<sup>Optional</sup> <a name="parameterType" id="@e-sheep-inc/cross-region-parameter.CrossRegionParameterProps.property.parameterType"></a>
 
 ```typescript
 public readonly parameterType: ParameterType;
@@ -312,7 +348,7 @@ ParameterType.STRING_LIST
 ```
 
 
-##### `policies`<sup>Optional</sup> <a name="policies" id="@alma-cdk/cross-region-parameter.CrossRegionParameterProps.property.policies"></a>
+##### `policies`<sup>Optional</sup> <a name="policies" id="@e-sheep-inc/cross-region-parameter.CrossRegionParameterProps.property.policies"></a>
 
 ```typescript
 public readonly policies: string;
@@ -326,13 +362,13 @@ One or more policies to apply to a SSM Parameter.
 
 ---
 
-##### `tags`<sup>Optional</sup> <a name="tags" id="@alma-cdk/cross-region-parameter.CrossRegionParameterProps.property.tags"></a>
+##### `tags`<sup>Optional</sup> <a name="tags" id="@e-sheep-inc/cross-region-parameter.CrossRegionParameterProps.property.tags"></a>
 
 ```typescript
 public readonly tags: TagProp[];
 ```
 
-- *Type:* <a href="#@alma-cdk/cross-region-parameter.TagProp">TagProp</a>[]
+- *Type:* <a href="#@e-sheep-inc/cross-region-parameter.TagProp">TagProp</a>[]
 
 Tags to add into the SSM Paramater that you want to add.
 
@@ -350,14 +386,14 @@ Tags to add into the SSM Paramater that you want to add.
 ```
 
 
-### TagProp <a name="TagProp" id="@alma-cdk/cross-region-parameter.TagProp"></a>
+### TagProp <a name="TagProp" id="@e-sheep-inc/cross-region-parameter.TagProp"></a>
 
 Tag properties.
 
-#### Initializer <a name="Initializer" id="@alma-cdk/cross-region-parameter.TagProp.Initializer"></a>
+#### Initializer <a name="Initializer" id="@e-sheep-inc/cross-region-parameter.TagProp.Initializer"></a>
 
 ```typescript
-import { TagProp } from '@alma-cdk/cross-region-parameter'
+import { TagProp } from '@e-sheep-inc/cross-region-parameter'
 
 const tagProp: TagProp = { ... }
 ```
@@ -366,12 +402,12 @@ const tagProp: TagProp = { ... }
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@alma-cdk/cross-region-parameter.TagProp.property.key">key</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@alma-cdk/cross-region-parameter.TagProp.property.value">value</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@e-sheep-inc/cross-region-parameter.TagProp.property.key">key</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@e-sheep-inc/cross-region-parameter.TagProp.property.value">value</a></code> | <code>string</code> | *No description.* |
 
 ---
 
-##### `key`<sup>Required</sup> <a name="key" id="@alma-cdk/cross-region-parameter.TagProp.property.key"></a>
+##### `key`<sup>Required</sup> <a name="key" id="@e-sheep-inc/cross-region-parameter.TagProp.property.key"></a>
 
 ```typescript
 public readonly key: string;
@@ -381,7 +417,7 @@ public readonly key: string;
 
 ---
 
-##### `value`<sup>Required</sup> <a name="value" id="@alma-cdk/cross-region-parameter.TagProp.property.value"></a>
+##### `value`<sup>Required</sup> <a name="value" id="@e-sheep-inc/cross-region-parameter.TagProp.property.value"></a>
 
 ```typescript
 public readonly value: string;

@@ -24,7 +24,7 @@ npx jest -t "Basic usage"   # by test name
 
 E2E test (actually deploys to AWS):
 ```bash
-RUN_E2E=true AWS_PROFILE=<profile> npx jest test/parameter.e2e.test.ts --no-coverage --testTimeout=600000
+RUN_E2E=true AWS_PROFILE=<profile> NODE_OPTIONS="--experimental-vm-modules" npx jest test/parameter.e2e.test.ts --no-coverage --testTimeout=600000
 ```
 
 ## Release
@@ -56,6 +56,6 @@ The library exports a single construct: `CrossRegionParameter` (src/parameter.ts
 ## Key Constraints
 
 - This is a **jsii** library — it must be compatible with jsii's supported language subset (no enums with computed values, no `extends` from non-jsii types, etc.).
-- `aws-sdk` and `change-case` are **bundled dependencies** (shipped with the package).
-- Peer dependencies: `aws-cdk-lib ^2.200.0`, `constructs ^10.0.0`.
-- Node >= 18.18.0.
+- `change-case` is a **bundled dependency** (shipped with the package).
+- Peer dependencies: `aws-cdk-lib ^2.244.0`, `constructs ^10.5.0`.
+- Node >= 22.16.0.

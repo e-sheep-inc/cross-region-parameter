@@ -1,6 +1,6 @@
 const { awscdk, TextFile, javascript, release } = require('projen');
 
-const nodejsVersion = '18.18.0';
+const nodejsVersion = '22.16.0';
 
 const project = new awscdk.AwsCdkConstructLibrary({
 
@@ -38,8 +38,11 @@ const project = new awscdk.AwsCdkConstructLibrary({
   },
   // Dependencies
   minNodeVersion: nodejsVersion,
-  cdkVersion: '2.200.0',
-  constructsVersion: '10.0.0',
+  cdkVersion: '2.244.0',
+  jestOptions: {
+    jestVersion: '^29',
+  },
+  constructsVersion: '10.5.0',
   peerDeps: [
     'constructs',
     'aws-cdk-lib',
@@ -47,12 +50,10 @@ const project = new awscdk.AwsCdkConstructLibrary({
   devDeps: [
     'constructs',
     'aws-cdk-lib',
-    'aws-sdk',
-    '@types/prettier@2.6.0',
-    '@types/change-case',
+    '@aws-sdk/client-ssm',
+    '@aws-sdk/client-sts',
   ],
   bundledDeps: [
-    'aws-sdk',
     'change-case',
   ],
 
