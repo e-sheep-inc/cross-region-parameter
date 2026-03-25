@@ -32,13 +32,14 @@
 
 ## Setup
 
-This package is published to [GitHub Packages](https://github.com/e-sheep-inc/cross-region-parameter/packages). To install, add the following to your project's `.npmrc`:
+This package is published to [GitHub Packages](https://github.com/e-sheep-inc/cross-region-parameter/packages). Add the following to your project's `.npmrc`:
 
 ```
 @e-sheep-inc:registry=https://npm.pkg.github.com
+//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}
 ```
 
-Then install:
+Set the `GITHUB_TOKEN` environment variable to a [personal access token](https://github.com/settings/tokens) with `read:packages` scope, then install:
 
 ```sh
 npm i -D @e-sheep-inc/cross-region-parameter
