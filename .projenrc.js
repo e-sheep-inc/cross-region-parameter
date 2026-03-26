@@ -1,6 +1,7 @@
 const { typescript, TextFile, javascript } = require('projen');
 
 const nodejsVersion = '22.16.0';
+const minNodeVersion = '22.0.0';
 
 const project = new typescript.TypeScriptProject({
 
@@ -15,7 +16,7 @@ const project = new typescript.TypeScriptProject({
   keywords: ['cdk', 'aws-cdk', 'awscdk', 'aws', 'cross-region', 'ssm', 'parameter'],
 
   packageManager: javascript.NodePackageManager.NPM,
-  minNodeVersion: nodejsVersion,
+  minNodeVersion: minNodeVersion,
   defaultReleaseBranch: 'main',
 
   // リリース・公開なし
